@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:workouts_app/Profile.dart';
+import 'package:workouts_app/addWorkoutPage.dart';
 import 'package:workouts_app/workout.dart';
-
 
 import 'messageResponse.dart';
 
@@ -28,13 +29,13 @@ class _MyhomePage extends State<MyHomePage> {
         title: Text(widget._title),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              print("Search Pressed");
-            },
-          ),
-          CircleAvatar(
+            icon:       const CircleAvatar(
             child: Text("profile"),
+          ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => Profile()));
+            },
           ),
         ],
 
@@ -80,7 +81,8 @@ class _MyhomePage extends State<MyHomePage> {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => empty()))
+          Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const addWorkoutsPage()))
               .then((Object) {
             if (Object != null) {
               setState(() {
@@ -91,7 +93,7 @@ class _MyhomePage extends State<MyHomePage> {
           });
         },
         tooltip: "add",
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

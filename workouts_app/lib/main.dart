@@ -91,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bool checkCredentials(name, pass) {
+    // replace with back-end call
     if (name == "filip" && pass == "1234") {
       return true;
     }
