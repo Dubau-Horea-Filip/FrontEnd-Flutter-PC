@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:workouts_app/Profile.dart';
 import 'package:workouts_app/addWorkoutPage.dart';
+import 'package:workouts_app/list_widget.dart';
+import 'package:workouts_app/simple_workout_widget.dart';
+import 'package:workouts_app/stat_widget.dart';
 import 'package:workouts_app/workout.dart';
 
 import 'messageResponse.dart';
@@ -26,60 +29,35 @@ class _MyhomePage extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 104, 26, 26),
         title: Text(widget._title),
         actions: [
           IconButton(
-            icon:       const CircleAvatar(
-            child: Text("profile"),
-          ),
+            icon: const CircleAvatar(
+              child: Text("profile"),
+            ),
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => Profile()));
+                  context, MaterialPageRoute(builder: (_) => const Profile()));
             },
           ),
         ],
-
-        // leading: new Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: CircleAvatar(
-        //     child: Text("profile"),
-        //   ),
-        //
-        // )
       ),
-      body: ListView.builder(
-          itemCount: works.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              onTap: () {
-                Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => empty()))
-                    .then((newObject) {
-                  if (newObject != null) {
-                    setState(() {
-                      works.removeAt(index);
-                      works.insert(index, newObject);
-                      messageResponse(context, newObject.name + " was updated");
-                    });
-                  }
-                });
-              },
-              onLongPress: () {
-                removeObject(context, index, works[index].name);
-              },
-              title: Text(works[index].name),
-              subtitle: Text(
-                  works[index].description + "\n" + works[index].id.toString()),
-              leading: CircleAvatar(
-                child: Text(works[index].name.substring(0, 1)),
-              ),
-              trailing: const Icon(
-                Icons.info,
-                color: Colors.blue,
-              ),
-            );
-          }),
+      backgroundColor: const Color.fromARGB(255, 49, 49, 49),
+      body: Column(
+        children: [
+          stat_widget(),
+          Row(
+            children: [
+              s_widget(1),
+              s_widget(2),
+              s_widget(2),
+            ],
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromARGB(255, 104, 26, 26),
         onPressed: () {
           Navigator.push(context,
                   MaterialPageRoute(builder: (_) => const addWorkoutsPage()))

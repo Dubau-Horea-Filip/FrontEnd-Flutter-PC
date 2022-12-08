@@ -1,0 +1,32 @@
+    ListView.builder(
+            itemCount: works.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                onTap: () {
+                  Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => empty()))
+                      .then((newObject) {
+                    if (newObject != null) {
+                      setState(() {
+                        works.removeAt(index);
+                        works.insert(index, newObject);
+                        messageResponse(context, newObject.name + " was updated");
+                      });
+                    }
+                  });
+                },
+                onLongPress: () {
+                  removeObject(context, index, works[index].name);
+                },
+                title: Text(works[index].name),
+                subtitle: Text(
+                    works[index].description + "\n" + works[index].id.toString()),
+                leading: CircleAvatar(
+                  child: Text(works[index].name.substring(0, 1)),
+                ),
+                trailing: const Icon(
+                  Icons.info,
+                  color: Colors.blue,
+                ),
+              );
+            }),
