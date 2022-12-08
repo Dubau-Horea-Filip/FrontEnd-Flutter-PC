@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types, file_names
 
 import 'package:flutter/material.dart';
+import 'package:workouts_app/passParam.dart';
+import 'package:workouts_app/simpleTextBox.dart';
 import 'package:workouts_app/simple_workout_widget.dart';
 
 class addWorkoutsPage extends StatefulWidget {
@@ -26,11 +28,15 @@ class _addWorkoutsPageState extends State<addWorkoutsPage> {
         ),
         body: Column(
           children: [
-            Text("Arms"),
+            Pass(
+              value: 'Arms',
+            ),
             Row(
               children: [s_widget(1), s_widget(2), s_widget(5)],
             ),
-            Text("Chest"),
+            Pass(
+              value: 'Chest',
+            ),
             Row(
               children: [s_widget(1), s_widget(2), s_widget(5)],
             ),

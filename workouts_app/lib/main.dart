@@ -67,13 +67,20 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   String name = controllerName.text;
                   String pass = controllerPassword.text;
-                  if (name.isNotEmpty &&
-                      pass.isNotEmpty &&
-                      checkCredentials(name, pass)) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => MyHomePage("Main Page")));
+                  if (name.isNotEmpty && pass.isNotEmpty) {
+                    if (checkCredentials(name, pass)) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => MyHomePage("Main Page")));
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: (_) => const AlertDialog(
+                                //title: Text("opa"),
+                                content: Text("Invalid Credentials"),
+                              ));
+                    }
                   } else {
                     showDialog(
                         context: context,

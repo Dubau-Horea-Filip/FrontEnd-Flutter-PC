@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:workouts_app/Profile.dart';
 import 'package:workouts_app/addWorkoutPage.dart';
 import 'package:workouts_app/list_widget.dart';
+import 'package:workouts_app/passParam.dart';
 import 'package:workouts_app/simple_workout_widget.dart';
 import 'package:workouts_app/stat_widget.dart';
 import 'package:workouts_app/workout.dart';
@@ -46,7 +47,11 @@ class _MyhomePage extends State<MyHomePage> {
       backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       body: Column(
         children: [
+          Pass(
+            value: 'Today',
+          ),
           stat_widget(),
+          Pass(value: "Comming Next"),
           Row(
             children: [
               s_widget(1),
