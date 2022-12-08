@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // ignore: duplicate_ignore
 class s_widget extends StatelessWidget {
   final id;
+
   s_widget(int i, {super.key, this.id});
 
   // ignore: constant_identifier_names
@@ -24,6 +25,7 @@ class s_widget extends StatelessWidget {
           bottom: bottom_padding,
           right: right_padding,
           top: top_padding), //apply padding to some sides only
+          // insert call to get the name of workout with th egiven id
       child: Text("Workout 1", style: stats_text_style_leftside));
 
   Padding workout_date = const Padding(
@@ -33,6 +35,7 @@ class s_widget extends StatelessWidget {
           //right: right_padding,
           //top: top_padding
           ), //apply padding to some sides only
+          // insert call to get the next day of workout with th egiven id
       child: Text("Monday", style: stats_text_style_rightside));
 
   @override

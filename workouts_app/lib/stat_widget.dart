@@ -91,8 +91,8 @@ class stat_widget extends StatelessWidget {
         margin: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.10,
             right: MediaQuery.of(context).size.width * 0.10,
-            top: MediaQuery.of(context).size.height * 0.10,
-            bottom: MediaQuery.of(context).size.height * 0.10),
+            top: 10, // MediaQuery.of(context).size.height * 0.10,
+            bottom: 10), //MediaQuery.of(context).size.height * 0.10),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 104, 26, 26),
           borderRadius: BorderRadius.circular(10.0),

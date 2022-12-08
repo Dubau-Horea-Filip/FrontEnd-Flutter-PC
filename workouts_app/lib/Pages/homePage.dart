@@ -1,14 +1,13 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names, avoid_types_as_parameter_names
 import 'package:flutter/material.dart';
-import 'package:workouts_app/Profile.dart';
-import 'package:workouts_app/addWorkoutPage.dart';
-import 'package:workouts_app/list_widget.dart';
+//import 'package:workouts_app/Pages/Profile.dart';
+import 'package:workouts_app/Pages/addWorkoutPage.dart';
 import 'package:workouts_app/passParam.dart';
 import 'package:workouts_app/simple_workout_widget.dart';
 import 'package:workouts_app/stat_widget.dart';
 import 'package:workouts_app/workout.dart';
-
-import 'messageResponse.dart';
+import '../messageResponse.dart';
+import 'Profile-R.dart';
 
 class MyHomePage extends StatefulWidget {
   final String _title;
@@ -32,9 +31,21 @@ class _MyhomePage extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 104, 26, 26),
         title: Text(widget._title),
+        //   actions: const [
+        //   CircleAvatar(
+        //     radius: 25,
+        //     child: Text("profile"),
+        //   ),
+        // ],
         actions: [
           IconButton(
+            splashRadius: 25,
             icon: const CircleAvatar(
+              minRadius: 25,
+              // foregroundImage: Image.asset(
+              //   'assets/Krunal.jpg',
+              // ),
+              // backgroundImage: Image.asset('assets/profile.png'),
               child: Text("profile"),
             ),
             onPressed: () {
@@ -47,14 +58,14 @@ class _MyhomePage extends State<MyHomePage> {
       backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       body: Column(
         children: [
-          Pass(
+          const Pass(
             value: 'Today',
           ),
           stat_widget(),
-          Pass(value: "Comming Next"),
+          const Pass(value: "Comming Next"),
           Row(
             children: [
-              s_widget(1),
+              s_widget(1), // s_widget get the id of the workout
               s_widget(2),
               s_widget(2),
             ],
@@ -85,23 +96,25 @@ class _MyhomePage extends State<MyHomePage> {
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              title: Text("are you sure you want to delete this workout?"),
-              content: Text("The workout " + name + " will be eliminated"),
+              title:
+                  const Text("are you sure you want to delete this workout?"),
+              content: Text("The workout $name will be eliminated"),
               actions: [
                 TextButton(
                     onPressed: () {
                       setState(() {
-                        this.works.removeAt(index);
+                        works.removeAt(index);
                         Navigator.pop(context);
                       });
                     },
-                    child:
-                        Text("Eliminate", style: TextStyle(color: Colors.red))),
+                    child: const Text("Eliminate",
+                        style: TextStyle(color: Colors.red))),
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("Cancel", style: TextStyle(color: Colors.blue)))
+                    child: const Text("Cancel",
+                        style: TextStyle(color: Colors.blue)))
               ],
             ));
   }

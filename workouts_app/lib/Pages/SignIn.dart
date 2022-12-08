@@ -1,53 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:workouts_app/Pages/SignIn.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:workouts_app/passParam.dart';
 
-import 'Pages/homePage.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const LoginPage(title: 'Login Page'),
-    );
-  }
-}
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class SignINPage extends StatefulWidget {
+  const SignINPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignINPage> createState() => _SignINPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignINPageState extends State<SignINPage> {
   late TextEditingController controllerName;
   late TextEditingController controllerPassword;
+  late TextEditingController controllerPassword2;
 
   @override
   void initState() {
     controllerName = TextEditingController();
     controllerPassword = TextEditingController();
+    controllerPassword2 = TextEditingController();
     super.initState();
   }
 
@@ -56,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 104, 26, 26),
-        title: Text(widget.title),
+        title: Text("sign in"),
       ),
       backgroundColor: const Color.fromARGB(255, 49, 49, 49),
       body: Center(
@@ -64,33 +36,23 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             TextBox(controllerName, "Name"),
             TextBox(controllerPassword, "password"),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const SignINPage()));
-                  },
-                  child: const Text("SignIN")),
-            ),
+            TextBox(controllerPassword2, "password2"),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
                   onPressed: () {
                     String name = controllerName.text;
                     String pass = controllerPassword.text;
+                    String pass2 = controllerPassword2.text;
                     if (name.isNotEmpty && pass.isNotEmpty) {
-                      if (checkCredentials(name, pass)) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const MyHomePage("Main Page")));
+                      if (pass == pass2) {
+                        signin(context, name, pass);
                       } else {
                         showDialog(
                             context: context,
                             builder: (_) => const AlertDialog(
                                   //title: Text("opa"),
-                                  content: Text("Invalid Credentials"),
+                                  content: Text("Password Should match"),
                                 ));
                       }
                     } else {
@@ -102,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                               ));
                     }
                   },
-                  child: const Text("Login")),
+                  child: const Text("create account")),
             )
           ],
         ),
@@ -110,15 +72,24 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  bool checkCredentials(name, pass) {
-    // replace with back-end call
-    if (name == "filip" && pass == "1234") {
-      return true;
-    }
-    return false;
-  }
+  signin(BuildContext context, n, p) {
+    //Navigator.pop(context);
 
-  login(name, pass) {}
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              //title: Text("opa"),
+              content: Text("Account Created"),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("ok", style: TextStyle(color: Colors.red)))
+              ],
+            ));
+  
+
 }
 
 class TextBox extends StatelessWidget {

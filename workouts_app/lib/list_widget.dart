@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:workouts_app/workout.dart';
 
+import 'package:flutter/material.dart';
+import 'package:workouts_app/workout.dart';
 import 'messageResponse.dart';
 
 class list_widget extends StatefulWidget {
@@ -65,23 +62,23 @@ class _list_widgetState extends State<list_widget> {
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              title: Text("are you sure you want to delete this workout?"),
-              content: Text("The workout " + name + " will be eliminated"),
+              title: const  Text("are you sure you want to delete this workout?"),
+              content: Text("The workout $name  will be eliminated"),
               actions: [
                 TextButton(
                     onPressed: () {
                       setState(() {
-                        this.works.removeAt(index);
+                        works.removeAt(index);
                         Navigator.pop(context);
                       });
                     },
                     child:
-                        Text("Eliminate", style: TextStyle(color: Colors.red))),
+                        const Text("Eliminate", style: TextStyle(color: Colors.red))),
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("Cancel", style: TextStyle(color: Colors.blue)))
+                    child: const Text("Cancel", style: TextStyle(color: Colors.blue)))
               ],
             ));
   }

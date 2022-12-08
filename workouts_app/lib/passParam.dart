@@ -17,11 +17,10 @@ class _PassState extends State<Pass> {
         // width: MediaQuery.of(context).size.width * 0.90,
         // height: MediaQuery.of(context).size.height * 0.5,
         margin: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.10,
-          right: MediaQuery.of(context).size.width * 0.10,
-          //top: MediaQuery.of(context).size.height * 0.10,
-          //bottom: MediaQuery.of(context).size.height * 0.10
-        ),
+            left: MediaQuery.of(context).size.width * 0.10,
+            right: MediaQuery.of(context).size.width * 0.10,
+            top: 10, //MediaQuery.of(context).size.height * 0.10,
+            bottom: 10), //MediaQuery.of(context).size.height * 0.10),
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 124, 11, 11),
           borderRadius: BorderRadius.circular(2.0),

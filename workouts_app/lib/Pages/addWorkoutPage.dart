@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:workouts_app/passParam.dart';
-import 'package:workouts_app/simpleTextBox.dart';
 import 'package:workouts_app/simple_workout_widget.dart';
 
 class addWorkoutsPage extends StatefulWidget {
@@ -22,19 +21,20 @@ class _addWorkoutsPageState extends State<addWorkoutsPage> {
           title: const Text("Add Workout"),
           actions: const [
             CircleAvatar(
+              radius: 25,
               child: Text("profile"),
             ),
           ],
         ),
         body: Column(
           children: [
-            Pass(
+            const Pass(
               value: 'Arms',
             ),
             Row(
               children: [s_widget(1), s_widget(2), s_widget(5)],
             ),
-            Pass(
+            const Pass(
               value: 'Chest',
             ),
             Row(
