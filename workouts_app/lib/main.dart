@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
               child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const SignINPage()));
+                        MaterialPageRoute(builder: (_) =>  const SignINPage()));
                   },
                   child: const Text("SignIN")),
             ),
@@ -119,6 +119,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   login(name, pass) {}
+
+  empty() {}
 }
 
 class TextBox extends StatelessWidget {

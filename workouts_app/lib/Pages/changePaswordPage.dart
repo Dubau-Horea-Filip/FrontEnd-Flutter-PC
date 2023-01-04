@@ -1,21 +1,24 @@
-// ignore_for_file: file_names
-import 'package:flutter/material.dart';
+// ignore_for_file: implementation_imports, file_names
 
-class SignINPage extends StatefulWidget {
-  const SignINPage({super.key});
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:workouts_app/main.dart';
+
+class ChangePaswordPage extends StatefulWidget {
+  const ChangePaswordPage({super.key});
 
   @override
-  State<SignINPage> createState() => _SignINPageState();
+  State<ChangePaswordPage> createState() => _ChangePaswordPageState();
 }
 
-class _SignINPageState extends State<SignINPage> {
-  late TextEditingController controllerName;
+class _ChangePaswordPageState extends State<ChangePaswordPage> {
+  late TextEditingController controllerOldPassword;
   late TextEditingController controllerPassword;
   late TextEditingController controllerPassword2;
 
   @override
   void initState() {
-    controllerName = TextEditingController();
+    controllerOldPassword = TextEditingController();
     controllerPassword = TextEditingController();
     controllerPassword2 = TextEditingController();
     super.initState();
@@ -32,19 +35,19 @@ class _SignINPageState extends State<SignINPage> {
       body: Center(
         child: ListView(
           children: [
-            TextBox(controllerName, "Name"),
-            TextBox(controllerPassword, "password"),
-            TextBox(controllerPassword2, "password2"),
+            TextBox(controllerOldPassword, "Old Password"),
+            TextBox(controllerPassword, "Enter new password"),
+            TextBox(controllerPassword2, "Repete new password"),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
                   onPressed: () {
-                    String name = controllerName.text;
+                    String name = controllerOldPassword.text;
                     String pass = controllerPassword.text;
                     String pass2 = controllerPassword2.text;
                     if (name.isNotEmpty && pass.isNotEmpty) {
                       if (pass == pass2) {
-                        signin(context, name, pass);
+                        changePassword(context, name, pass);
                       } else {
                         showDialog(
                             context: context,
@@ -70,48 +73,25 @@ class _SignINPageState extends State<SignINPage> {
     );
   }
 
-  signin(BuildContext context, n, p) {
+  changePassword(BuildContext context, n, p) {
     //Navigator.pop(context);
-
-    showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-              //title: Text("opa"),
-              content: const Text("Account Created"),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child:
-                        const Text("ok", style: TextStyle(color: Colors.red)))
-              ],
-            ));
-  }
-}
-
-class TextBox extends StatelessWidget {
-  final String label;
-  final TextEditingController controller;
-
-  const TextBox(this.controller, this.label, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-            filled: true,
-            labelText: label,
-            suffix: GestureDetector(
-              child: const Icon(Icons.close),
-              onTap: () {
-                controller.clear();
-              },
-            )),
-      ),
-    );
+    const oldpasword = "123"; //api call to check password
+    if (n != oldpasword) {
+    } else {
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                //title: Text("opa"),
+                content: const Text("Passwrd Changed"),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child:
+                          const Text("ok", style: TextStyle(color: Colors.red)))
+                ],
+              ));
+    }
   }
 }
