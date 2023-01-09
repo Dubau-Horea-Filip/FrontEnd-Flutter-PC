@@ -6,6 +6,7 @@ import 'package:workouts_app/passParam.dart';
 import 'package:workouts_app/simple_workout_widget.dart';
 import 'package:workouts_app/stat_widget.dart';
 import 'package:workouts_app/workout.dart';
+import '../NavBar.dart';
 import '../messageResponse.dart';
 import 'Profile-R.dart';
 
@@ -28,6 +29,7 @@ class _MyhomePage extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 104, 26, 26),
         title: Text(widget._title),
